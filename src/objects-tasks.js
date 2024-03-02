@@ -62,8 +62,12 @@ function mergeObjects(objects) {
  *    removeProperties({name: 'John', age: 30, city: 'New York'}, 'age') => {name: 'John', city: 'New York'}
  *
  */
-function removeProperties(/* obj, keys */) {
-  throw new Error('Not implemented');
+function removeProperties(obj, keys) {
+  const copy = { ...obj };
+  for (let i = 0; i < keys.length; i += 1) {
+    delete copy[keys[i]];
+  }
+  return copy;
 }
 
 /**
@@ -78,8 +82,10 @@ function removeProperties(/* obj, keys */) {
  *    compareObjects({a: 1, b: 2}, {a: 1, b: 2}) => true
  *    compareObjects({a: 1, b: 2}, {a: 1, b: 3}) => false
  */
-function compareObjects(/* obj1, obj2 */) {
-  throw new Error('Not implemented');
+function compareObjects(obj1, obj2) {
+  const copy1 = JSON.stringify(obj1);
+  const copy2 = JSON.stringify(obj2);
+  return copy1 === copy2;
 }
 
 /**
